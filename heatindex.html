@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>First Web App - Heat Index Calculator</title>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <h1> Heat Index Calculator</h1>
+    <p>This application will return the heat index based on the entered temperture (Fahrenheit) and the relative humidity (a percent 0 to 100)</p>
+    <form onsubmit="return false;">
+      <label>
+        Temp (F&deg;)
+        <input type="number" id="tempInput" />
+      </label>
+      <label>
+        (&percnt;) Humidity
+        <input type="number" id="humidityInput" />
+      </label>
+      <br>
+      <button onclick="calculateIndex();">Calculate</button>
+      The heat index is: 
+      <output id="result"></output>
+    </form>
+    <script>
+      function calculateIndex() {
+        var temp = document.querySelector('#tempInput').value;
+        var humid = document.querySelector('#humidityInput').value;
+        var outputElem = document.querySelector('#result');
+        outputElem.innerHTML = Math.round(-42.379 + 2.04901523 * temp + 10.14333127 * humid - 0.22475541 * temp * humid - 0.00683783 * temp * temp - 0.05481717 * humid * humid + 0.00122874 * temp * temp * humid + 0.00085282 * temp * humid * humid - 0.00000199 * temp * temp * humid * humid);
+      }
+    </script>
+  </body>
+</html>
